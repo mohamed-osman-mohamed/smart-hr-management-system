@@ -217,7 +217,7 @@ dotnet run
 
 ## 📄 User Details
 
-![User Details](screenshots/user-details-page.jpg)
+![User Details](screenshots/user-datails-page.jpg)
 
 ---
 
