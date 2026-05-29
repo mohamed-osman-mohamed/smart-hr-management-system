@@ -193,7 +193,7 @@ dotnet run
 
 ## ✏️ Edit Department
 
-![Edit Department](screenshots/edit-department-page.jpg)
+![Edit Department](screenshots/edit-department -page.jpg)
 
 ---
 
@@ -255,7 +255,6 @@ dotnet run
 
 * Audit Logging
 * Export Reports
-* Dark Mode
 * Real-Time Notifications
 * RESTful API Integration
 * Advanced Analytics Dashboard
