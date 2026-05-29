@@ -1,0 +1,102 @@
+﻿@model EmployeeViewModel
+@inject IDepartmentServices _departmentServices
+@{
+    var Departments = new SelectList(_departmentServices.GetAllDepartments(),
+                                    nameof(DepartmentDto.Id),
+                                    nameof(DepartmentDto.Name));
+}
+                            <!-- Create & Edit Inputs View [Component] -->
+
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div> <!-- Employee Name -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div> <!-- Employee Email-->
+                                       <!-- Address -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Address.Country"></label>
+    <input asp-for="Address.Country" class="form-control" />
+    <span asp-validation-for="Address.Country" class="text-danger"></span>
+</div> <!-- Employee Country -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Address.State"></label>
+    <input asp-for="Address.State" class="form-control" />
+    <span asp-validation-for="Address.State" class="text-danger"></span>
+</div> <!-- Employee State -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Address.City"></label>
+    <input asp-for="Address.City" class="form-control" />
+    <span asp-validation-for="Address.City" class="text-danger"></span>
+</div> <!-- Employee City -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Address.Street"></label>
+    <input asp-for="Address.Street" class="form-control" />
+    <span asp-validation-for="Address.Street" class="text-danger"></span>
+</div> <!-- Employee Street -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Address.ZipCode"></label>
+    <input asp-for="Address.ZipCode" class="form-control" />
+    <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+</div> <!-- Employee ZipCode -->
+                                       <!--                  -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="PhoneNumber"></label>
+    <input asp-for="PhoneNumber" class="form-control" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div> <!-- Employee Phone Number -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Age"></label>
+    <input asp-for="Age" class="form-control" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+</div> <!-- Employee Age -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Salary"></label>
+    <input asp-for="Salary" class="form-control" />
+    <span asp-validation-for="Salary" class="text-danger"></span>
+</div> <!-- Employee Salary -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="EmployeeType"></label>
+    <select asp-for="EmployeeType" class="form-select" asp-items="Html.GetEnumSelectList<EmployeeType>()">
+        <option value="@null" disabled selected> Select Employee Type </option>
+    </select>
+    <span asp-validation-for="EmployeeType" class="text-danger"></span>
+</div> <!-- Employee Type -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="DepartmentId"></label>
+    <select asp-for="DepartmentId" class="form-select" asp-items="Departments"  >
+        <option value="@null" disabled selected > Select Department </option>
+    </select>
+    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+</div> <!-- Employee Department -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="HiringDate"></label>
+    <input type="date" asp-for="HiringDate" class="form-control" />
+    <span asp-validation-for="HiringDate" class="text-danger"></span>
+</div> <!-- Employee Hiring Date -->
+<div class="form-group mb-3 col-6">
+    <label class="form-label" asp-for="Image"></label>
+    <input type="file" asp-for="Image" class="form-control" />
+    <span asp-validation-for="Image" class="text-danger"></span>
+</div> <!-- Employee Image -->
+<div class="form-check mb-3 col-6">
+    <input asp-for="IsActive" class="form-check-input" />
+    <label class="form-check-label ps-2" asp-for="IsActive" for="IsActive"></label>
+</div> <!-- Employee Activate -->
+<div class="form-group mb-3 col-6 d-flex align-items-center ">
+    <label class="col-form-label me-auto" asp-for="Gender"></label>
+    <div>
+        @foreach (var genderOption in Enum.GetValues<Gender>())
+        {
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" asp-for="Gender" value="@genderOption" />
+                <label class="form-check-label"> @genderOption</label>
+            </div>
+        }
+    </div>
+    <span asp-validation-for="Gender" class="text-danger" />
+</div> <!-- Employee Gender -->

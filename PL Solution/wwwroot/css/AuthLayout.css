@@ -1,0 +1,168 @@
+﻿.auth-main-bg {
+    /*    background: linear-gradient(rgba(30, 59, 179, 0.85), rgba(12, 26, 94, 0.95)), url('https://i.pinimg.com/736x/d7/91/f3/d791f3250ce33cc7cc01043c063adabe.jpg');*/
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url('https://i.pinimg.com/736x/d7/91/f3/d791f3250ce33cc7cc01043c063adabe.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.login-card-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 900px;
+    height: 600px;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+
+    .login-card-container h2,
+    .login-card-container p,
+    .login-card-container .form-check-label,
+    .login-card-container .text-muted {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+.custom-input-group .form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white !important;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+    .custom-input-group .form-control:focus {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: none;
+        outline: none;
+    }
+
+.custom-input-group .input-group-text {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+.custom-input-group .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+.login-card-container h2,
+.login-card-container p,
+.login-card-container label {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.login-card-container .col-lg-6.bg-white {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.btn-primary-dark {
+    background: linear-gradient(135deg, #3a5aff 0%, #1e3bb3 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 59, 179, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+    .btn-primary-dark:hover {
+        background: linear-gradient(135deg, #4d6dff 0%, #2547d0 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(30, 59, 179, 0.6);
+        color: white;
+    }
+
+
+    .btn-primary-dark:active {
+        transform: translateY(0);
+    }
+
+
+/*----------- or divder -------------*/
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+    .divider span {
+        margin: 0 15px;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+/*------------------------*/
+
+
+.social-icons .btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white !important;
+    transition: 0.3s;
+}
+
+    .social-icons .btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+.login-visual-box {
+    background: linear-gradient(135deg, #1e3bb3 0%, #0c1a5e 100%);
+    background-image: url('https://i.pinimg.com/1200x/d7/be/fc/d7befcf64d71b3db6cfff3a25f7ffb35.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+}
+
+.Register-visual-box {
+    background: linear-gradient(135deg, #1e3bb3 0%, #0c1a5e 100%);
+    background-image: url('https://i.pinimg.com/originals/bb/1c/46/bb1c4666aa0d51cc745e41e7fe10a996.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 400px;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,43 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<br />
+<br />
+
+<form asp-action="Delete">
+    <partial name="PartialViews/DetailDeletePartialView" />
+    <br />
+    <br />
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal-@Model.Id">
+        <i class="fas fa-trash"></i> Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back To List</a>
+</form>
+
+<!-- Confirm massage-->
+
+
+<div class="modal fade" id="DeleteModal-@Model.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Department</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are You Sure to Delete this Department?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete" asp-controller="Department" asp-route-id="@Model.Id" class="mt-4">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

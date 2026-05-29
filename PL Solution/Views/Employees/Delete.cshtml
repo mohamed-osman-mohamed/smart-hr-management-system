@@ -1,0 +1,33 @@
+﻿@model EmployeeDetailsDto
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="my-5 w-75">Delete Employee</h1>
+@if (Model.Image != null)
+{
+    <img class="w-25" src="~/Files/images/@Model.Image" alt="Personal Photo" />
+}
+else
+{
+    <img class="w-25" src="~/Files/images/download.jpg" alt=" Photo" />
+}
+<ul class="nav nav-tabs" id="employeeTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="general-tab" data-bs-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">General</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="administration-tab" data-bs-toggle="tab" href="#administration" role="tab" aria-controls="administration" aria-selected="false">Administration</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    
+    <partial name="PartialViews/_DetailsDeletePartialView" />
+    <div class="mt-4">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal-@Model.Id">
+            <i class="fas fa-trash"></i> Delete
+        </button>
+        <a asp-action="Index" class="btn btn-outline-dark">Back To list</a>
+    </div>
+</div>

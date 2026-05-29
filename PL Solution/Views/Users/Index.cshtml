@@ -1,0 +1,115 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewData["Title"] = "Users Management";
+}
+
+<div class="employee-table-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold mb-0" style="color: #2b3674;">Users Directory</h3>
+            <p class="text-muted">Manage system access and permissions</p>
+        </div>
+    </div>
+
+    @if (Model.Count() > 0)
+    {
+   
+        <partial name="_SearchbarPartialView" model='"Search an user by email ......."' />
+
+        <div id="UsersTableContainer" class="table-responsive">
+            <table class="table innovative-table mt-3 text-center" id="UsersTable">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(D => D.Id)</th>
+                        <th>Full Name</th> 
+                        <th>@Html.DisplayNameFor(D => D.Email)</th>
+                        <th>@Html.DisplayNameFor(D => D.Roles)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="UsersTableBody">
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                <small class="text-muted-small fw-bold">@user.Id.ToString().Substring(0, 5)...</small>
+                            </td>
+                            <td>
+                                <span class="fw-bold" style="color: #2b3674;">@user.FirstName @user.LastName</span>
+                            </td>
+                            <td>
+                                <span class="text-primary"><i class="fa-regular fa-envelope me-1"></i>@user.Email</span>
+                            </td>
+                            <td>
+                                @if (user.Roles != null)
+                                {
+                                    foreach (var role in user.Roles)
+                                    {
+                                        <span class="badge rounded-pill bg-light text-dark border me-1" style="font-size: 0.75rem;">
+                                            <i class="fa-solid fa-user-shield text-warning me-1"></i> @role
+                                        </span>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                
+                                <partial name="_ButtonsPartialView" model="@user.Id" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        @* حالة عدم وجود بيانات بتصميم متناسق *@
+        <div class="text-center p-5 bg-light rounded-3 mt-3">
+            <i class="fa-solid fa-users-slash fa-4x mb-3 text-muted" style="opacity: 0.2;"></i>
+            <h5 class="text-secondary">No Users Found !!</h5>
+            <p class="text-muted">It seems your user directory is currently empty.</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let searchTimer;
+
+            $(document).on('keyup', '#SearchInput', function () {
+                const searchValue = $(this).val();
+
+                clearTimeout(searchTimer);
+
+                searchTimer = setTimeout(function() {
+                    $.ajax({
+                        url: '@Url.Action("Index", "Users")', // يوجه الطلب لـ Controller المستخدمين تلقائياً
+                        type: 'GET',
+                        data: { searchInput: searchValue }, // تأكد أن اسم البرامتر يطابق الـ Controller
+                        beforeSend: function() {
+                            $('#searchIcon').addClass('d-none');
+                            $('#searchLoader').removeClass('d-none');
+                        },
+                        success: function (result) {
+                            $('#searchIcon').removeClass('d-none');
+                            $('#searchLoader').addClass('d-none');
+
+                            // استخلاص الـ tbody الجديد من النتيجة القادمة
+                            const newTableBody = $(result).find('#UsersTableBody').html();
+
+                            if (newTableBody.trim() === "") {
+                                $('#UsersTable').hide();
+                                $('#NoUsersMessage').removeClass('d-none'); // لو عندك رسالة "لا يوجد مستخدمين"
+                            } else {
+                                $('#UsersTableBody').html(newTableBody);
+                                $('#UsersTable').show();
+                                $('#NoUsersMessage').addClass('d-none');
+                            }
+                        }
+                    });
+                }, 400);
+            });
+        });
+    </script>
+}

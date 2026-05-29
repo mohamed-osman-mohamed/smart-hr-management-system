@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Check Your Inbox";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    .auth-container {
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth-card {
+        width: 450px;
+        padding: 45px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        text-align: center;
+    }
+
+    .auth-icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .auth-title {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #fff;
+    }
+
+    .auth-text {
+        color: rgba(255,255,255,0.85);
+        font-size: 15px;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    .btn-inbox {
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-weight: 500;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: rgba(255,255,255,0.8);
+    }
+
+        .back-link:hover {
+            color: #fff;
+        }
+</style>
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <div class="auth-icon">
+            📩
+        </div>
+
+        <h3 class="auth-title">Check Your Inbox</h3>
+
+        <p class="auth-text">
+            We've sent you an email with a password reset link.
+            Please check your inbox and follow the instructions.
+        </p>
+
+        <a href="https://mail.google.com/mail/u/0/#inbox"
+           target="_blank"
+           class="btn btn-primary btn-inbox w-100">
+            Open My Inbox
+        </a>
+
+        <a asp-controller="Account"
+           asp-action="Login"
+           class="back-link">
+            ← Back to Login
+        </a>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+            <div class="rounded-3 me-2 shadow-sm d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                @* <i class="bi bi-cpu-fill fs-5"></i> *@
+                <img class="w-100" src="~/Files/images/NavIcon.png" alt="Alternate Text" />
+            </div>
+            <span class="tracking-tighter">SMART<span class="text-dark"> SYSTEM</span></span>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold text-uppercase small tracking-wide">
+                <li class="nav-item">
+                    <a class="nav-link px-3 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active text-primary" : "")" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Employees" ? "active text-primary" : "")" asp-controller="Employees" asp-action="Index">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Department" ? "active text-primary" : "")" asp-controller="Department" asp-action="Index">Departments</a>
+                </li>
+                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link px-3 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Users" ? "active text-primary" : "")" asp-controller="Users" asp-action="Index">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Role" ? "active text-primary" : "")" asp-controller="Role" asp-action="Index">Roles</a>
+                    </li>
+                }
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center bg-light px-3 py-2 rounded-pill" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-5 me-2 text-primary"></i>
+                        <span class="small fw-bold text-dark">
+                            @(User.Identity.IsAuthenticated? User.Identity.Name : "Guest")
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-3 rounded-3">
+                        <li><a class="dropdown-item py-2" href="#">Settings <i class="bi bi-gear ms-2"></i> </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form asp-controller="Account" asp-action="LogOut" method="post">
+                                <button type="submit" class="dropdown-item py-2 text-danger fw-bold">Sign Out
+                                    <i class="fa-solid fa-right-from-bracket ms-2" style="color: rgba(255, 0, 0, 1.00);"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

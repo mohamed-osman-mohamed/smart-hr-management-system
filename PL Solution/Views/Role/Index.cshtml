@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+    ViewData["Title"] = "Roles Management";
+}
+
+<div class="employee-table-container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold mb-0" style="color: #2b3674;">System Roles</h3>
+            <p class="text-muted">Manage security permissions and access levels</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary px-4 shadow-sm" style="border-radius: 10px;">
+            <i class="fa-solid fa-plus me-2"></i> Create New Role
+        </a>
+    </div>
+
+    <partial name="_SearchbarPartialView" model='"Search a Role by title ......."' />
+
+    @if (Model != null && Model.Any())
+    {
+        <div id="RolesTableContainer" class="table-responsive">
+            <table class="table innovative-table mt-3 text-center" id="RolesTable">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(D => D.Id)</th>
+                        <th>Role Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="RolesTableBody">
+                    @foreach (var role in Model)
+                    {
+                        <tr>
+                            <td>
+                                <span class="badge bg-light text-muted border px-3">
+                                    #@role.Id.ToString().Substring(0, 16)
+                                </span>
+                            </td>
+                            <td>
+                                <span class="fw-bold" style="color: #2b3674; font-size: 1.1rem;">
+                                    <i class="fa-solid fa-shield-halved text-primary me-2"></i>@role.Name
+                                </span>
+                            </td>
+                            <td>
+                                <partial name="_ButtonsPartialView" model="@role.Id" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    <div id="noDataAlert" class="text-center p-5 d-none bg-light rounded-3 mt-3">
+        <i class="fa-solid fa-magnifying-glass fa-4x mb-3 text-muted" style="opacity: 0.2;"></i>
+        <h5 class="text-secondary">No Matching Roles Found!</h5>
+        <p class="text-muted">Try adjusting your search to find what you're looking for.</p>
+    </div>
+</div>

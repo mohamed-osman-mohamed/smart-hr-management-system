@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EmployeeDto>
+
+@* شيلنا أي Header أو Buttons من هنا *@
+<table id="EmployeesTable" class="table innovative-table mt-3">
+    <thead class="text-center">
+        <tr>
+            <th>@Html.DisplayNameFor(e => e.Name)</th>
+            <th>@Html.DisplayNameFor(e => e.Email)</th>
+            <th>Role</th>
+            <th>Age</th>
+            <th>Dept.</th>
+            <th>Salary</th>
+            <th>Status</th>
+            <th>Gndr</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="EmployeesTableBody" class="text-center">
+        @foreach (var employee in Model)
+        {
+            <tr class="align-middle">
+                <td class="fw-bold-dark">@employee.Name</td>
+                <td class="text-muted-small">@employee.Email</td>
+                <td><span class="badge bg-light text-dark border">@employee.EmployeeType</span></td>
+                <td>@employee.Age</td>
+                <td>@employee.DepartmentName</td>
+                <td class="fw-bold text-success">@employee.Salary.ToString("C")</td>
+                <td>
+                    <span class="status-badge @(employee.IsActive ? "status-active" : "status-inactive")">
+                        <i class="fa-solid @(employee.IsActive ? "fa-circle-check" : "fa-circle-xmark")"></i>
+                        @(employee.IsActive ? "Active" : "Inactive")
+                    </span>
+                </td>
+                <td>
+                    <i class="fa-solid @(employee.Gender.ToString().ToLower() == "male" ? "fa-mars text-primary" : "fa-venus text-danger")"></i>
+                </td>
+                <td>
+                    <partial name="_ButtonsPartialView" model="employee.Id.ToString()" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

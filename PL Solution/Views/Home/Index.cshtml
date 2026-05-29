@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    
+}
+<main class="bg-light min-vh-100 py-5">
+    <div class="container py-lg-5">
+
+        <div class="row justify-content-center text-center mb-5 animate-slide-in">
+            <div class="col-lg-8">
+                <h6 class="text-primary fw-bold text-uppercase tracking-widest mb-2">Internal Management Suite</h6>
+                <h1 class="display-3 fw-black text-dark mb-4">
+                    Control Everything <br />
+                    <span class="text-primary border-bottom border-5 border-primary">In One Place</span>
+                </h1>
+                <p class="lead text-muted fs-5 mx-auto" style="max-width: 700px;">
+                    Welcome back! Use the tools below to manage your organization's hierarchy,
+                    monitor employee data, and fine-tune system permissions.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card border-0 shadow-sm h-100 text-center p-4 hover-lift">
+                    <div class="icon-circle bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                        <i class="bi bi-diagram-3-fill fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Departments</h5>
+                    <p class="text-muted small">Organize your company structure and add new business units.</p>
+                    <a class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-2" asp-area="" asp-controller="Department" asp-action="Index" >Manage Units</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card border-0 shadow-sm h-100 text-center p-4 hover-lift">
+                    <div class="icon-circle bg-success bg-opacity-10 text-success mx-auto mb-4">
+                        <i class="bi bi-person-badge-fill fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Employees</h5>
+                    <p class="text-muted small">Onboard new staff members and manage existing employee records.</p>
+                    <a class="btn btn-outline-success btn-sm rounded-pill px-4 mt-2" asp-area="" asp-controller="Employees" asp-action="Index">View Staff</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card border-0 shadow-sm h-100 text-center p-4 hover-lift ">
+                    <div class="icon-circle bg-white text-dark mx-auto mb-4 shadow-sm">
+                        <i class="bi bi-people-fill fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">User Access</h5>
+                    <p class="text-light opacity-75 small">System-level accounts and account status monitoring.</p>
+                    <a class="btn btn-outline-dark btn-sm rounded-pill px-4 mt-2" asp-area="" asp-controller="Users" asp-action="Index">Account List</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card border-0 shadow-sm h-100 text-center p-4 hover-lift">
+                    <div class="icon-circle bg-warning bg-opacity-10 text-warning mx-auto mb-4">
+                        <i class="bi bi-shield-lock-fill fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Role Control</h5>
+                    <p class="text-muted small">Assign permissions and define roles (Admin, Manager, User).</p>
+                    <a class="btn btn-outline-warning btn-sm rounded-pill px-4 mt-2" asp-area="" asp-controller="Role" asp-action="Index">Edit Roles</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-5 pt-5 text-center g-3">
+            <div class="col-4 border-end">
+                <h3 class="fw-bold mb-0">12</h3>
+                <small class="text-muted text-uppercase">Departments</small>
+            </div>
+            <div class="col-4 border-end">
+                <h3 class="fw-bold mb-0">120+</h3>
+                <small class="text-muted text-uppercase">Employees</small>
+            </div>
+            <div class="col-4">
+                <h3 class="fw-bold mb-0">Active</h3>
+                <small class="text-muted text-uppercase">System Status</small>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<style>
+    /* Premium Font Integration */
+    @@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .fw-black {
+        font-weight: 800;
+    }
+
+    .tracking-widest {
+        letter-spacing: 0.15em;
+    }
+
+    /* Icon Circles */
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+    }
+
+    /* Cards Styling */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .hover-lift:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+        }
+
+    /* Highlighted Dark Card */
+    .highlight-card {
+        background: #212529;
+        color: white !important;
+    }
+
+    /* Fix for Razor Keyframes */
+    .animate-slide-in {
+        animation: slideUpIn 1s ease-out forwards;
+    }
+
+    @@keyframes slideUpIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
